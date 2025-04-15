@@ -34,19 +34,17 @@
             <h1>Hello, I'm Daryl Guerzon</h1>
             <h2>4th Year Computer Engineering Student</h2>
             <p>I am a graduating Computer Engineering student with a strong foundation in hardware and software development. As a scholar, I have consistently excelled academically while actively participating in national-level competitions in robotics, pitching, and hackathons, 
-                showcasing my ability to innovate and solve real-world problems.Beyond academics, I am a freelance developer, taking on projects in AutoCAD, embedded systems, and web development.
-                Let’s build something great together!</p>
+                showcasing my ability to innovate and solve real-world problems. Beyond academics, I am a freelance developer, taking on projects in AutoCAD, embedded systems, and web development.
+                Let's build something great together!</p>
             <div class="hero-buttons">
-                <a href="contact.html" class="btn primary-btn">Get in Touch</a>
+                <a href="contact.html" class="btn primary-btn" id="contactBtn">Get in Touch</a>
                 <a href="/files/Daryl N. Guerzon - FEU TECH.pdf" target="_blank" class="btn secondary-btn">Download Resume</a>
-                </a>
             </div>
         </div>
         <div class="hero-image">
             <!-- Replace with your professional photo -->
-            <img src="/img/dar.jpg" alt="Professional headshot of [Your Name]">
+            <img src="/img/dar.jpg" alt="Professional headshot of Daryl Guerzon">
         </div>
-        
     </section>
 
     <!-- Featured Skills -->
@@ -70,10 +68,10 @@
             </div>
         </div>
     </section>
-    <!---Expertise--->
+    
+    <!-- Expertise -->
     <section class="expertise-section">
         <div class="container">
-        
             <div class="expertise-container">
                 <div class="expertise">
                     <i class="fab fa-html5"></i>
@@ -118,7 +116,6 @@
             </div>
         </div>
     </section>
-    
 
     <!-- Featured Projects -->
     <section class="featured-projects">
@@ -134,7 +131,7 @@
             <div class="project-card">
                 <img src="/img/embedded.jpg" alt="Project 2">
                 <h3>Hand2Hand</h3>
-                <p> A glove-based communication device that notifies and alarms nearby family members
+                <p>A glove-based communication device that notifies and alarms nearby family members
                     when the patient who has difficulty speaking has a need.</p>
                 <a href="portfolio.html#project2" class="btn small-btn">View Details</a>
             </div>
@@ -142,15 +139,14 @@
                 <img src="/img/online lib.png" alt="Project 3">
                 <h3>Feu Tech Online Library</h3>
                 <p>Streamlines the reservation and scheduling of books and e-books, also creates a profile for every user indicating their borrowing history
-                    and favorites.
-                </p>
+                    and favorites.</p>
                 <a href="portfolio.html#project3" class="btn small-btn">View Details</a>
             </div>
         </div>
     </section>
 
-    <!--Education -->
-   <section class=header-educ>
+    <!-- Education -->
+    <section class="header-educ">
         <h1>Education Timeline</h1> 
         
         <div class="education-timeline">
@@ -159,7 +155,7 @@
                     <div class="education-date">Aug 2021 - July 2025</div>
                     <h3 class="education-title">Bachelor of Science in Computer Engineering</h3>
                     <p class="education-institution">Far Eastern University - Institute of Technology</p>
-                    <p>Recognized twice as a Top Performing Student and Dean's Lister,Won and Competed on National Level Robotics,Pitching and Hackathon Challenges</p>
+                    <p>Recognized twice as a Top Performing Student and Dean's Lister, Won and Competed on National Level Robotics, Pitching and Hackathon Challenges</p>
                 </div>
             </div>
             
@@ -168,7 +164,7 @@
                     <div class="education-date">Aug 2015 - Jun 2021</div>
                     <h3 class="education-title">High School Diploma</h3>
                     <p class="education-institution">Marikina Science High School</p>
-                    <p>Graduated with High Honors,Former Member of the Taekwondo Varsity Team</p>
+                    <p>Graduated with High Honors, Former Member of the Taekwondo Varsity Team</p>
                 </div>
             </div>
             
@@ -182,7 +178,6 @@
             </div>
         </div>
     </section>
-
     
     <!-- Call to Action -->
     <section class="cta">
@@ -222,16 +217,55 @@
         </div>
     </footer>
 
-    <script src="script.js">
-        
-    // Function to open email when "Get in Touch" is clicked
-    document.getElementById("contactBtn").addEventListener("click", function() {
-        window.location.href = "mailto:guerzondaryl25@gmail.com";
-    });
-
-    // Function to download resume when "Download Resume" is clicked
+    <!-- If you want to use an external JavaScript file -->
+    <!-- <script src="script.js"></script> -->
     
-
-</script>
+    <!-- Inline JavaScript for the responsive navbar and other functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Burger menu functionality
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            const navLinks = document.querySelectorAll('.nav-links li');
+            
+            // Toggle Navigation
+            burger.addEventListener('click', function() {
+                // Toggle Nav
+                nav.classList.toggle('nav-active');
+                
+                // Animate Links
+                navLinks.forEach((link, index) => {
+                    if (link.style.animation) {
+                        link.style.animation = '';
+                    } else {
+                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                    }
+                });
+                
+                // Burger Animation
+                burger.classList.toggle('toggle');
+            });
+            
+            // Close menu when clicking on a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
+                    
+                    navLinks.forEach(link => {
+                        link.style.animation = '';
+                    });
+                });
+            });
+            
+            // Function for "Get in Touch" button
+            if (document.getElementById("contactBtn")) {
+                document.getElementById("contactBtn").addEventListener("click", function(e) {
+                    e.preventDefault(); // Prevent default anchor behavior
+                    window.location.href = "mailto:guerzondaryl25@gmail.com";
+                });
+            }
+        });
+    </script>
 </body>
 </html>
